@@ -1,6 +1,37 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranches": ["dev"],
   "extends": [
-    "config:base"
+    ":timezone(Asia/Tokyo)",
+    ":label(renovate)",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "labels": ["dependencies", "renovate"],
+  "schedule": [
+    "every weekend"
+  ],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "groupName": "all major dependencies",
+      "groupSlug": "all major",
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ]
+    }
   ]
 }
